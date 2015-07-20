@@ -1,3 +1,32 @@
+>本镜像由`google/nodejs`而来，代码根据 [nodeclub](https://github.com/cnodejs/nodeclub/) 未使用redis的版本修改，mongo配置信息通过环境变量传递：
+
+```
+// Get db config from env
+function _getMongoUrl(){
+  var db_addr = process.env.MONGO_CARROT_ADDR;
+  var db_port = process.env.MONGO_CARROT_PORT;
+  var db_user = process.env.MONGO_CARROT_USER;
+  var db_pass = process.env.MONGO_CARROT_PASS;
+  var db_database =  process.env.MONGO_CARROT_DATABASE;
+  var db_url  = 'mongodb://';
+  if (db_user && db_pass) {
+    db_url += (db_user + ':' + db_pass + '@');
+  }
+  db_url += (db_addr? db_addr: 'localhost');
+  db_url += ':' + (db_port? db_port: 27017);
+  db_url += '/' + (db_database? db_database: 'admin');
+  console.log('Connect to MongoStore Use this url:' + db_url);
+  return db_url;
+}
+```
+网站实例： [http://cnode-2967w.q1.tenxcloud.net:41894](http://cnode-2967w.q1.tenxcloud.net:41894)  
+其中数据库是使用时速云mongo镜像创建的。
+
+>注意使用本镜像创建容器时，要在`高级设置`中勾选`更新镜像`
+
+
+以下是Nodeclub相关信息：
+
 Nodeclub
 =
 
