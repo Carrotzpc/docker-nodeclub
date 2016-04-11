@@ -1,5 +1,5 @@
 # Dockerfile to create a nodeclub image
-FROM google/nodejs
+FROM google/nodejs:0.10.33
 MAINTAINER Carrotzpc
 
 # Add files to the image
